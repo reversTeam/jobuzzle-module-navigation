@@ -1,0 +1,9 @@
+#import (Config.path +'/Kernel/Autoload/MasterAutoload') = MasterAutoload;
+
+class NavigationAutoload extends MasterAutoload {
+
+	confModuleName = 'Navigation';
+
+}
+
+#export NavigationAutoload;
