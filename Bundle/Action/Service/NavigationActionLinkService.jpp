@@ -1,0 +1,26 @@
+#import (Config.path +'/Kernel/Service/MasterService') = MasterService;
+
+class NavigationActionLinkService extends MasterService {
+
+	initialize : function () {
+		var parent = _super();
+		
+		console.log("init");
+		this.onListen();
+		return parent;
+	}
+
+	onListen : function (){
+		var dispatcher = serviceLocator.get("Dispatcher");
+		dispatcher.listen("Navigation:Link:onClick", this, this.linkOnClick.bind(this));
+	}
+
+	linkOnClick : function (event, data) {
+		var router = serviceLocator.get("Router");
+		if(data == undefined || data.url == undefined )
+			throw "url undefined , you can call this link//url";
+		var route = router.match(data.url);
+		console.log("linkOnClick : " + data.url , route);
+		history.pushState({}, "test", data.url);
+	}
+}

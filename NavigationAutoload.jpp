@@ -4,6 +4,12 @@ class NavigationAutoload extends MasterAutoload {
 
 	confModuleName = 'Navigation';
 
+	onBootstrap : function () {
+		var serviceManager = serviceLocator.get("ServiceManager");
+
+		serviceManager.get("navigation_action_link_service");
+	}
+
 }
 
 #export NavigationAutoload;

@@ -1,0 +1,2 @@
+invokables : 
+	navigation_action_link_service : Action/Service/NavigationActionLinkService
