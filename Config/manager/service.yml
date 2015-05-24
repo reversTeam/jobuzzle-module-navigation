@@ -1,2 +1,4 @@
 invokables : 
 	navigation_action_link_service : Action/Service/NavigationActionLinkService
+	navigation_history_link_service : History/Service/NavigationHistoryMainService
+	navigation_title_change_service : Title/Service/NavigationTitleChangeService
