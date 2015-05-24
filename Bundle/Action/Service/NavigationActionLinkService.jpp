@@ -5,22 +5,40 @@ class NavigationActionLinkService extends MasterService {
 	initialize : function () {
 		var parent = _super();
 		
-		console.log("init");
 		this.onListen();
 		return parent;
 	}
 
 	onListen : function (){
 		var dispatcher = serviceLocator.get("Dispatcher");
-		dispatcher.listen("Navigation:Link:onClick", this, this.linkOnClick.bind(this));
+		var	self = this;
+		
+		window.addEventListener('popstate', function(event) {
+		 	console.log("popstate");
+		 	self.change(event , {url : window.location.pathname.toString()});
+		 }, false);
+
+
+		dispatcher.listen("Navigation:Link:onClick", this, this.change.bind(this));
 	}
 
-	linkOnClick : function (event, data) {
+	change : function (event, data) {
 		var router = serviceLocator.get("Router");
+		var sm = serviceLocator.get("ServiceManager");
+		var manageHistory = sm.get("navigation_history_link_service");
+		var title = sm.get('navigation_title_change_service');
+
 		if(data == undefined || data.url == undefined )
 			throw "url undefined , you can call this link//url";
 		var route = router.match(data.url);
-		console.log("linkOnClick : " + data.url , route);
-		history.pushState({}, "test", data.url);
+
+		title.changeTitle(data.title);
+		if (event.state == undefined && event.state != 0)
+			manageHistory.pushState({}, data.url);
+		else
+			manageHistory.changeState(event.state)
+
+
+
 	}
 }
