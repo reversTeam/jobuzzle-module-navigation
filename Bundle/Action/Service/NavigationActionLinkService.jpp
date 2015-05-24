@@ -26,12 +26,16 @@ class NavigationActionLinkService extends MasterService {
 		var router = serviceLocator.get("Router");
 		var sm = serviceLocator.get("ServiceManager");
 		var manageHistory = sm.get("navigation_history_link_service");
+		var dispatcher = serviceLocator.get("Dispatcher");
+
 		var title = sm.get('navigation_title_change_service');
 
 		if(data == undefined || data.url == undefined )
 			throw "url undefined , you can call this link//url";
 		var route = router.match(data.url);
 
+		console.log(data);
+		dispatcher.trigger('Body:Content:change', {content : data.template});
 		title.changeTitle(data.title);
 		if (event.state == undefined && event.state != 0)
 			manageHistory.pushState({}, data.url);
