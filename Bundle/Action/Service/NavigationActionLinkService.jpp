@@ -34,8 +34,7 @@ class NavigationActionLinkService extends MasterService {
 			throw "url undefined , you can call this link//url";
 		var route = router.match(data.url);
 
-		console.log(data);
-		dispatcher.trigger('Body:Content:change', {content : data.template.getView()});
+		dispatcher.trigger('Body:Content:change', {content : data.template});
 		title.changeTitle(data.title);
 		if (event.state == undefined && event.state != 0)
 			manageHistory.pushState({}, data.url);
