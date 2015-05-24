@@ -35,7 +35,7 @@ class NavigationActionLinkService extends MasterService {
 		var route = router.match(data.url);
 
 		console.log(data);
-		dispatcher.trigger('Body:Content:change', {content : data.template});
+		dispatcher.trigger('Body:Content:change', {content : data.template.getView()});
 		title.changeTitle(data.title);
 		if (event.state == undefined && event.state != 0)
 			manageHistory.pushState({}, data.url);
