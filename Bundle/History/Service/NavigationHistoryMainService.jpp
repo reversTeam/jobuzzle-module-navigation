@@ -5,32 +5,41 @@ class NavigationHistoryMainService extends MasterService {
 	initialize : function () {
 		var parent = _super();
 		
+		this.onListen();
 		return parent;
 	}
 
 	onListen : function (){
 		var dispatcher = serviceLocator.get("Dispatcher");
 
-		dispatcher.listen('History:go:forward',this, this.goFoward.bind(this));
-		dispatcher.listen('History:go:back',this, this.goBack.bind(this));
-		dispatcher.listen('History:pushState:?',this, this.pushState.bind(this));
-		dispatcher.listen('History:delHistory:?',this, this.delHistory.bind(this));
+		dispatcher.listen('History:change:next',this, this.next.bind(this));
+		dispatcher.listen('History:change:prev',this, this.prev.bind(this));
+		dispatcher.listen('History:change:add',this, this.add.bind(this));
+		dispatcher.listen('History:change:delete',this, this.delete.bind(this));
 	}
 
-	changeState : function (state) {
-		//history.go(state);
+	changeState : function (url) {
+		var dispatcher = serviceLocator.get('Dispatcher');
+
+		dispatcher.trigger('History:change:url', { url : url });
 	}
 
-	goFoward : function () {window.history.forward();}
+	next : function () {
+		window.history.forward();
+	}
 
-	goBack : function () {window.history.back();}
+	prev : function () {
+		window.history.back();
+	}
 
-	pushState : function (objstate, url) {
+	add : function (objstate, url) {
 		if (objstate == undefined)
 			objstate = {};
 		history.pushState(objstate, "test", url);
+		this.changeState(url);
 	}
 
-	delHistory : function (argument) {
+	delete : function (argument) {
+
 	}
 }
