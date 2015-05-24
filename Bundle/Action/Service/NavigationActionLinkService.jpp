@@ -13,9 +13,13 @@ class NavigationActionLinkService extends MasterService {
 		var dispatcher = serviceLocator.get("Dispatcher");
 		var	self = this;
 		
-		window.addEventListener('popstate', function(event) {
+		window.addEventListener('popstate', function(event, state) {
 		 	console.log("popstate");
-		 	self.change(event , {url : window.location.pathname.toString()});
+		 	console.log(event, state);
+		 	self.change(event , {
+		 		url : window.location.pathname.toString(),
+		 		// template : 
+		 	});
 		 }, false);
 
 
@@ -37,7 +41,7 @@ class NavigationActionLinkService extends MasterService {
 		dispatcher.trigger('Body:Content:change', {content : data.template});
 		title.changeTitle(data.title);
 		if (event.state == undefined && event.state != 0)
-			manageHistory.pushState({}, data.url);
+			manageHistory.pushState({ template : data.template }, data.url);
 		else
 			manageHistory.changeState(event.state)
 
