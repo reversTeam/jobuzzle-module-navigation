@@ -14,11 +14,9 @@ class NavigationActionLinkService extends MasterService {
 		var	self = this;
 		
 		window.addEventListener('popstate', function(event, state) {
-		 	console.log("popstate");
-		 	console.log(event, state);
 		 	self.change(event , {
 		 		url : window.location.pathname.toString(),
-		 		// template : 
+		 		template : event.state.template
 		 	});
 		 }, false);
 
@@ -31,21 +29,21 @@ class NavigationActionLinkService extends MasterService {
 		var sm = serviceLocator.get("ServiceManager");
 		var manageHistory = sm.get("navigation_history_link_service");
 		var dispatcher = serviceLocator.get("Dispatcher");
-
+		var route = router.match(data.url);
 		var title = sm.get('navigation_title_change_service');
 
-		if(data == undefined || data.url == undefined )
-			throw "url undefined , you can call this link//url";
-		var route = router.match(data.url);
-
+		if(data == undefined || data.url == undefined)
+			throw "Url it's undefined, you can call this link/url";
+		if (!route)
+			dispatcher.trigger('Error:url:404', { route : data.url });
+		
 		dispatcher.trigger('Body:Content:change', {content : data.template});
 		title.changeTitle(data.title);
-		if (event.state == undefined && event.state != 0)
-			manageHistory.pushState({ template : data.template }, data.url);
-		else
-			manageHistory.changeState(event.state)
-
-
-
+		if (event.state == undefined && event.state != 0) {
+			manageHistory.add({ template : data.template }, data.url);
+		}
+		else {
+			manageHistory.changeState(event.state.url);
+		}
 	}
 }
