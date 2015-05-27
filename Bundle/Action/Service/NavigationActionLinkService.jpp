@@ -47,3 +47,5 @@ class NavigationActionLinkService extends MasterService {
 		}
 	}
 }
+
+#export NavigationActionLinkService;
