@@ -7,9 +7,10 @@ class NavigationAutoload extends MasterAutoload {
 	onBootstrap : function () {
 		var serviceManager = serviceLocator.get("ServiceManager");
 
-		serviceManager.get("navigation_action_link_service");
+		serviceManager.get('navigation_action_link_service');
 		serviceManager.get('navigation_history_link_service');
 		serviceManager.get('navigation_title_change_service');
+		serviceManager.get('navigation_resize_manage_service');
 	}
 
 }

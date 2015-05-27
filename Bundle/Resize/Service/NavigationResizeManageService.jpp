@@ -1,0 +1,29 @@
+#import (Config.path +'/Kernel/Service/MasterService') = MasterService;
+
+class NavigationResizeManageService extends MasterService {
+
+	initialize : function () {
+		var parent = _super();
+		
+		this.onListen();
+		return parent;
+	}
+
+	onListen : function (){
+		var dispatcher = serviceLocator.get("Dispatcher");
+		var self = this;
+
+		window.addEventListener('resize', this.resize.bind(this));
+	}
+
+	resize : function () {
+		var dispatcher = serviceLocator.get('Dispatcher');
+
+		dispatcher.trigger('Navigation:change:size', {
+			width : window.innerWidth,
+			height : window.innerHeight
+		});
+	}
+}
+
+#export  NavigationResizeManageService;
