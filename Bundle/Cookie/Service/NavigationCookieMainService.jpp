@@ -1,0 +1,57 @@
+#import (Config.path +'/Kernel/Service/MasterService') = MasterService;
+
+class NavigationCookieMainService extends MasterService {
+
+	_cookies = {};
+
+	initialize : function () {
+		_super();
+		this.initCookies();
+	}
+
+	initCookies : function () {
+		var cookies = document.cookie.split(';');
+		var len = cookies.length;
+		var content = [];
+
+		for (var i = 0; i < len; ++i) {
+			content = cookies[i].split('=');
+			this._cookies[content[0].substr(i > 0)] = content[1];
+		}
+	}
+
+	create : function (name, value, timeout, path) {
+		if (name == undefined)
+			return ;
+		if (path == undefined)
+			path = Config.modules.Navigation.cookie.default.path;
+		if (timeout == undefined)
+			timeout = Config.modules.Navigation.cookie.default.time;
+		if (value == undefined)
+			value = true;
+		var expires = this.formatDateFromMinutes(timeout);
+		document.cookie = name +'='+ value +'; expires='+ expires +'; path='+ path;
+	}
+
+	formatDateFromMinutes : function (day) {
+		var date = new Date();
+
+		date.setTime(date.getTime() + (day * 24 * 3600 * 1000));
+		return date.toGMTString();
+	}
+
+	delete : function (name) {
+		this.create(name, false, -1);
+		if (this._cookies[name])
+			delete this._cookies[name];
+	}
+
+	get : function (name) {
+		if (this._cookies[name])
+			return this._cookies[name];
+		return false;
+	}
+
+}
+
+#export NavigationCookieMainService;
