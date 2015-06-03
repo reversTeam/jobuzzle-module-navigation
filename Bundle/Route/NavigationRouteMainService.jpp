@@ -1,0 +1,26 @@
+#import (Config.path +'/Kernel/Service/MasterService') = MasterService;
+
+class NavigationRouteMainService extends MasterService {
+
+	initialize : function () {
+		var routes = Config.routes;
+		var router = serviceLocator.get('Router');
+		_super();
+		this.imbrication(routes, router);
+	}
+
+	imbrication : function (routes, parent) {
+		var routeManager = serviceLocator.get('RouteManager');
+		var route = undefined;
+
+		for (var i in routes) {
+			route = routeManager.get(i);
+			parent.addRoute(route.getName(), route);
+			if (routes[i] != null)
+				this.imbrication(routes[i], parent.getRoute(route.getName()).getRoute('view'));
+		}
+	}
+
+}
+
+#export NavigationRouteManageService;
