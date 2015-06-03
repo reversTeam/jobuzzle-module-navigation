@@ -3,3 +3,5 @@ invokables :
 	navigation_history_link_service : History/Service/NavigationHistoryMainService
 	navigation_title_change_service : Title/Service/NavigationTitleChangeService
 	navigation_resize_manage_service : Resize/Service/NavigationResizeManageService
+	navigation_cookie_main_service : Cookie/Service/NavigationCookieMainService
+	navigation_route_main_service : Cookie/Service/NavigationRouteMainService

@@ -13,6 +13,12 @@ class NavigationAutoload extends MasterAutoload {
 		serviceManager.get('navigation_resize_manage_service');
 	}
 
+	init : function () {
+		var serviceManager = serviceLocator.get("ServiceManager");
+
+		serviceManager.get('navigation_route_main_service');
+	}
+
 }
 
 #export NavigationAutoload;
