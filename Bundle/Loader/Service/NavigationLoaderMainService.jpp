@@ -1,0 +1,7 @@
+#import (Config.path +'/Kernel/Service/MasterService') = MasterService;
+
+class NavigationLoaderMainService extends MasterService {
+
+}
+
+#export NavigationLoaderMainService;

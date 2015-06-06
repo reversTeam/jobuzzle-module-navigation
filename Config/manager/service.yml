@@ -5,3 +5,4 @@ invokables :
 	navigation_resize_manage_service : Resize/Service/NavigationResizeManageService
 	navigation_cookie_main_service : Cookie/Service/NavigationCookieMainService
 	navigation_route_main_service : Cookie/Service/NavigationRouteMainService
+	navigation_loader_main_service : Loader/Service/NavigationLoaderMainService

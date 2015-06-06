@@ -1,0 +1,15 @@
+#import (Config.path +'/Kernel/Template/View/MasterView') = MasterView;
+
+class NavigationLoaderTemplateMainView extends MasterView {
+
+	render : function () {
+		return <div className="loader">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	}
+
+}
+
+#export NavigationLoaderTemplateMainView;
