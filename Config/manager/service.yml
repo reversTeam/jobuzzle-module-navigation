@@ -6,3 +6,4 @@ invokables :
 	navigation_cookie_main_service : Cookie/Service/NavigationCookieMainService
 	navigation_route_main_service : Cookie/Service/NavigationRouteMainService
 	navigation_loader_main_service : Loader/Service/NavigationLoaderMainService
+	navigation_scroll_main_service : Scroll/Service/NavigationScrollMainService

@@ -1,0 +1,44 @@
+#import (Config.path +'/Kernel/Service/MasterService') = MasterService;
+
+class NavigationScrollMainService extends MasterService {
+
+	_currentY = 0;
+	_percent = 0;
+	_range = 2;
+
+	initialize : function () {
+		_super();
+
+		window.addEventListener('scroll', this.handleScroll.bind(this));
+	}
+
+	handleScroll : function (event) {
+		var dispatcher = serviceLocator.get('Dispatcher');
+		var height = window.innerHeight;
+		var totalHeight = event.srcElement.body.scrollHeight;
+		var currentY = event.srcElement.body.scrollTop;
+		var percent = 0;
+
+		if (currentY < this._currentY) {
+			percent = Math.floor((currentY / totalHeight) * 100 / this._range) * this._range;
+			if (percent != this._percent) {
+				dispatcher.trigger('Navigation:Scroll:Top'+ percent);
+				dispatcher.trigger('Navigation:Scroll:Top', { percent : percent });
+			}
+		} else if (currentY > this._currentY) {
+			percent = Math.floor(((currentY + height) / totalHeight) * 100 / this._range) * this._range;
+			if (percent != this._percent) {
+				dispatcher.trigger('Navigation:Scroll:Bottom'+ percent);
+				dispatcher.trigger('Navigation:Scroll:Bottom', { percent : percent });
+			}
+		}
+		this._percent = percent;
+		this._currentY = currentY;
+
+		// dispatcher.trigger()
+		// console.log(this._currentY +'/'+ totalHeight);
+	}
+
+}
+
+#export NavigationScrollMainService;

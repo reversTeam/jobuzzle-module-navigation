@@ -7,6 +7,7 @@
 		animation: animate $loader_animation_time linear infinite;
 		animation-delay: ($loader_animation_time / 4);
 		-webkit-animation-delay: ($loader_animation_time / 4);
+		border : 1px solid rgba(white, 0.1);
 
 		&:first-child {
 			animation-delay: 0s;

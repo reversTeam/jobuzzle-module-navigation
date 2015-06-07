@@ -15,8 +15,9 @@ class NavigationAutoload extends MasterAutoload {
 
 	init : function () {
 		var serviceManager = serviceLocator.get("ServiceManager");
-
+		
 		serviceManager.get('navigation_route_main_service');
+		serviceManager.get('navigation_scroll_main_service');
 	}
 
 }
