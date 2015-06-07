@@ -14,37 +14,44 @@ class NavigationActionLinkService extends MasterService {
 		var	self = this;
 		
 		window.addEventListener('popstate', function(event, state) {
-		 	self.change(event , {
-		 		url : window.location.pathname.toString(),
-		 		template : event.state.template
-		 	});
+		 	self.change(event , window.location.pathname.toString());
 		 }, false);
 
 
 		dispatcher.listen("Navigation:Link:onClick", this, this.change.bind(this));
 	}
 
-	change : function (event, data) {
+	change : function (event, url) {
 		var router = serviceLocator.get("Router");
-		var sm = serviceLocator.get("ServiceManager");
-		var manageHistory = sm.get("navigation_history_link_service");
+		var serviceManager = serviceLocator.get("ServiceManager");
+		var manageHistory = serviceManager.get("navigation_history_link_service");
 		var dispatcher = serviceLocator.get("Dispatcher");
-		var route = router.match(data.url);
-		var title = sm.get('navigation_title_change_service');
+		var route = router.match(url);
+		var title = serviceManager.get('navigation_title_change_service');
 
-		if(data == undefined || data.url == undefined)
+		if(url == undefined)
 			throw "Url it's undefined, you can call this link/url";
-		if (!route)
-			dispatcher.trigger('Error:url:404', { route : data.url });
-		
-		dispatcher.trigger('Body:Content:change', {content : data.template});
-		title.changeTitle(data.title);
+		if (!route) {
+			dispatcher.trigger('Error:url:404', { route : url });
+			return ;
+		}
+
+		this.action(route);
 		if (event.state == undefined && event.state != 0) {
-			manageHistory.add({ template : data.template }, data.url);
+			manageHistory.add({}, url);
 		}
 		else {
 			manageHistory.changeState(event.state.url);
 		}
+	}
+
+	action : function (route) {
+		var controllerManager = serviceLocator.get('ControllerManager');
+		var controller = controllerManager.get(route.actions.controller);
+		var actions = route.actions;
+		delete route.actions;
+
+		controller[actions.method](route);
 	}
 }
 
