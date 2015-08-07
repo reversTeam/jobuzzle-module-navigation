@@ -1,5 +1,3 @@
-#import (Config.path +'/Kernel/Service/MasterService') = MasterService;
-
 class NavigationCookieMainService extends MasterService {
 
 	_cookies = {};
@@ -53,5 +51,3 @@ class NavigationCookieMainService extends MasterService {
 	}
 
 }
-
-#export NavigationCookieMainService;
