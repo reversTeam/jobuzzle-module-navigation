@@ -1,5 +1,3 @@
-#import (Config.path +'/Kernel/Service/MasterService') = MasterService;
-
 class NavigationScrollMainService extends MasterService {
 
 	_currentY = 0;
@@ -40,5 +38,3 @@ class NavigationScrollMainService extends MasterService {
 	}
 
 }
-
-#export NavigationScrollMainService;

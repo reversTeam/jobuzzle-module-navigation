@@ -1,5 +1,3 @@
-#import (Config.path +'/Kernel/Template/View/MasterView') = MasterView;
-
 class NavigationLoaderTemplateMainView extends MasterView {
 
 	render : function () {
@@ -11,5 +9,3 @@ class NavigationLoaderTemplateMainView extends MasterView {
 	}
 
 }
-
-#export NavigationLoaderTemplateMainView;

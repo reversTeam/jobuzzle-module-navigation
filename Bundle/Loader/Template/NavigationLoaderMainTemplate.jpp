@@ -1,9 +1,5 @@
-#import (Config.path +'/Kernel/Template/MasterTemplate') = MasterTemplate;
-
 class NavigationLoaderMainTemplate extends MasterTemplate {
 
 	_viewClassName = 'NavigationLoaderTemplateMainView';
 
 }
-
-#export NavigationLoaderMainTemplate;
