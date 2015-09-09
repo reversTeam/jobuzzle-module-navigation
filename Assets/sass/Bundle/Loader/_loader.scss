@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-08-08 14:32:21
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-09 18:20:55
 **************************************************************/
 
 .loader {
@@ -16,7 +16,7 @@
 		height: $loader_size_height;
 		margin-left : (2 * $loader_size_with);
 		display: inline-block;
-		animation: animate $loader_animation_time linear infinite;
+		animation: animateLoader $loader_animation_time linear infinite;
 		animation-delay: ($loader_animation_time / 4);
 		-webkit-animation-delay: ($loader_animation_time / 4);
 		border : 1px solid rgba(white, 0.1);
@@ -29,13 +29,6 @@
 		&:last-child {
 			animation-delay: ($loader_animation_time / 2);
 			-webkit-animation-delay: ($loader_animation_time / 2);
-		}
-
-		@keyframes animate {
-			25%		{ transform: scale(1);		background-color : rgba($primary_color, 0.3); }
-			50%		{ transform: sclae(1.50);	background-color : rgba($primary_color, 0.5); }
-			75%		{ transform: scale(2);		background-color : rgba($primary_color, 0.7); }
-			100%	{ transform: sclae(1.50);	background-color : rgba($primary_color, 0.5); }
 		}
 	}
 }
