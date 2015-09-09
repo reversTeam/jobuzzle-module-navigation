@@ -3,11 +3,16 @@
 *     ####         #                               #          *
 *       ##  #####  ######  #     # ####### ####### #  #####   * @Author: revers
 *       ## #     # #     # #     #      #       #  # #     #  *
-*       ## #     # #     # #     #     #       #   # #     #  * @Date:   2015-08-08 11:12:48
+*       ## #     # #     # #     #     #       #   # #     #  * @Date:   2015-09-09 18:14:07
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-09 18:17:36
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-09 18:20:57
 **************************************************************/
 
-@import "animation";
+@include keyframes(animateLoader) {
+	25%		{ transform: scale(1);		background-color : rgba($primary_color, 0.3); }
+	50%		{ transform: sclae(1.50);	background-color : rgba($primary_color, 0.5); }
+	75%		{ transform: scale(2);		background-color : rgba($primary_color, 0.7); }
+	100%	{ transform: sclae(1.50);	background-color : rgba($primary_color, 0.5); }
+}
