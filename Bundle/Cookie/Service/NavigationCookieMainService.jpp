@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-08-08 14:32:21
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-11 23:26:28
 **************************************************************/
 
 class NavigationCookieMainService extends MasterService {
@@ -30,13 +30,13 @@ class NavigationCookieMainService extends MasterService {
 		}
 	}
 
-	create : function (name, value, timeout, path) {
+	public create : function (name, value, timeout, path) {
 		if (name == undefined)
 			return ;
 		if (path == undefined)
-			path = Config.modules.Navigation.cookie.default.path;
+			path = Config['modules']['Navigation']['cookie']['default']['path'];
 		if (timeout == undefined)
-			timeout = Config.modules.Navigation.cookie.default.time;
+			timeout = Config['modules']['Navigation']['cookie']['default']['time'];
 		if (value == undefined)
 			value = true;
 		var expires = this.formatDateFromMinutes(timeout);
@@ -50,13 +50,13 @@ class NavigationCookieMainService extends MasterService {
 		return date.toGMTString();
 	}
 
-	delete : function (name) {
+	public remove : function (name) {
 		this.create(name, false, -1);
 		if (this._cookies[name])
 			delete this._cookies[name];
 	}
 
-	get : function (name) {
+	public get : function (name) {
 		if (this._cookies[name])
 			return this._cookies[name];
 		return false;

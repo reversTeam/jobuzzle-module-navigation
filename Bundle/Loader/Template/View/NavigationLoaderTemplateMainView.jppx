@@ -7,12 +7,12 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-08-08 14:32:21
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-11 21:24:00
 **************************************************************/
 
 class NavigationLoaderTemplateMainView extends MasterView {
 
-	render : function () {
+	public render : function () {
 		return <div className="loader">
 			<span></span>
 			<span></span>

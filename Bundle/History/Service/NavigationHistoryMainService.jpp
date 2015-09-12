@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-08-08 14:32:21
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-12 01:58:06
 **************************************************************/
 
 class NavigationHistoryMainService extends MasterService {
@@ -19,27 +19,27 @@ class NavigationHistoryMainService extends MasterService {
 		return parent;
 	}
 
-	onListen : function (){
+	public onListen : function (){
 		var dispatcher = serviceLocator.get("Dispatcher");
 
 		dispatcher.listen('History:change:next',this, this.next.bind(this));
 		dispatcher.listen('History:change:prev',this, this.prev.bind(this));
 		dispatcher.listen('History:change:add',this, this.add.bind(this));
-		dispatcher.listen('History:change:delete',this, this.delete.bind(this));
+		dispatcher.listen('History:change:remove',this, this.remove.bind(this));
 	}
 
 	changeState : function (url) {
 		var dispatcher = serviceLocator.get('Dispatcher');
 
-		dispatcher.trigger('History:change:url', { url : url });
+		dispatcher.trigger('History:change:url', { 'url' : url });
 	}
 
 	next : function () {
-		window.history.forward();
+		window['history']['forward']();
 	}
 
 	prev : function () {
-		window.history.back();
+		window['history']['back']();
 	}
 
 	add : function (objstate, url) {
@@ -49,7 +49,7 @@ class NavigationHistoryMainService extends MasterService {
 		this.changeState(url);
 	}
 
-	delete : function (argument) {
+	remove : function (argument) {
 
 	}
 }

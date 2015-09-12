@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-08-08 14:32:21
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-11 21:47:14
 **************************************************************/
 
 class NavigationResizeManageService extends MasterService {
@@ -19,7 +19,7 @@ class NavigationResizeManageService extends MasterService {
 		return parent;
 	}
 
-	onListen : function (){
+	public onListen : function (){
 		var dispatcher = serviceLocator.get("Dispatcher");
 		var self = this;
 
