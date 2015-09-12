@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-08-08 14:32:21
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-12 14:06:31
 **************************************************************/
 
 class NavigationActionLinkService extends MasterService {
@@ -19,12 +19,12 @@ class NavigationActionLinkService extends MasterService {
 		return parent;
 	}
 
-	onListen : function (){
+	public onListen : function (){
 		var dispatcher = serviceLocator.get("Dispatcher");
 		var	self = this;
 		
-		window.addEventListener('popstate', function(event, state) {
-		 	self.change(event , window.location.pathname.toString());
+		window['addEventListener']('popstate', function(event, state) {
+		 	self.change(event , window['location']['pathname']['toString']());
 		 }, false);
 
 
@@ -42,7 +42,8 @@ class NavigationActionLinkService extends MasterService {
 		if(url == undefined)
 			throw "Url it's undefined, you can call this link/url";
 		if (!route) {
-			dispatcher.trigger('Error:url:404', { route : url });
+			console.log('404');
+			dispatcher.trigger('Error:url:404', { 'route' : url });
 			return ;
 		}
 
@@ -57,10 +58,10 @@ class NavigationActionLinkService extends MasterService {
 
 	action : function (route) {
 		var controllerManager = serviceLocator.get('ControllerManager');
-		var controller = controllerManager.get(route.actions.controller);
-		var actions = route.actions;
-		delete route.actions;
+		var controller = controllerManager.get(route['actions']['controller']);
+		var actions = route['actions'];
+		delete route['actions'];
 
-		controller[actions.method](route);
+		controller[actions['method']](route);
 	}
 }

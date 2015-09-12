@@ -7,14 +7,14 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-08-08 14:32:21
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-11 21:49:11
 **************************************************************/
 
 class NavigationAutoload extends MasterAutoload {
 
 	confModuleName = 'Navigation';
 
-	onBootstrap : function () {
+	public onBootstrap : function () {
 		var serviceManager = serviceLocator.get("ServiceManager");
 
 		serviceManager.get('navigation_action_link_service');
@@ -23,7 +23,7 @@ class NavigationAutoload extends MasterAutoload {
 		serviceManager.get('navigation_resize_manage_service');
 	}
 
-	init : function () {
+	public init : function () {
 		var serviceManager = serviceLocator.get("ServiceManager");
 		
 		serviceManager.get('navigation_route_main_service');
