@@ -7,7 +7,7 @@
 #       ## #     # #     # #     #    #       #    # #     #  #
 #       ## #     # #     # #     #   #       #     # ######   # @Last Modified by:   revers
 #  ####### #     # #     # #     #  #       #      # #        #
-#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-08-08 14:32:21
+#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-09-13 16:14:18
 ###############################################################
 
 invokables : 
@@ -16,6 +16,6 @@ invokables :
 	navigation_title_change_service : Title/Service/NavigationTitleChangeService
 	navigation_resize_manage_service : Resize/Service/NavigationResizeManageService
 	navigation_cookie_main_service : Cookie/Service/NavigationCookieMainService
-	navigation_route_main_service : Cookie/Service/NavigationRouteMainService
+	navigation_route_main_service : Route/Service/NavigationRouteMainService
 	navigation_loader_main_service : Loader/Service/NavigationLoaderMainService
 	navigation_scroll_main_service : Scroll/Service/NavigationScrollMainService

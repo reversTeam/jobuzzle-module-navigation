@@ -7,12 +7,19 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-09 18:20:57
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-13 20:02:36
 **************************************************************/
 
 @include keyframes(animateLoader) {
-	25%		{ transform: scale(1);		background-color : rgba($primary_color, 0.3); }
-	50%		{ transform: sclae(1.50);	background-color : rgba($primary_color, 0.5); }
-	75%		{ transform: scale(2);		background-color : rgba($primary_color, 0.7); }
-	100%	{ transform: sclae(1.50);	background-color : rgba($primary_color, 0.5); }
+	0%		{ transform: scale(0.8);	background-color : rgba($primary_color, 0.3);  border-color : rgba(white, 0.6); }
+	10%		{ transform: scale(1);		background-color : rgba($primary_color, 0.4);  border-color : rgba(white, 0.5); }
+	20%		{ transform: scale(1.2);	background-color : rgba($primary_color, 0.5);  border-color : rgba(white, 0.4); }
+	30%		{ transform: scale(1.6);	background-color : rgba($primary_color, 0.6);  border-color : rgba(white, 0.3); }
+	40%		{ transform: scale(1.8);	background-color : rgba($primary_color, 0.7);  border-color : rgba(white, 0.2); }
+	50%		{ transform: scale(2);		background-color : rgba($primary_color, 0.8);  border-color : rgba(white, 0.1); }
+	60%		{ transform: scale(1.8);	background-color : rgba($primary_color, 0.7);  border-color : rgba(white, 0.2); }
+	70%		{ transform: scale(1.6);	background-color : rgba($primary_color, 0.6);  border-color : rgba(white, 0.3); }
+	80%		{ transform: scale(1.4);	background-color : rgba($primary_color, 0.5);  border-color : rgba(white, 0.4); }
+	90%		{ transform: scale(1.2);	background-color : rgba($primary_color, 0.4);  border-color : rgba(white, 0.5); }
+	100%	{ transform: scale(1);		background-color : rgba($primary_color, 0.3);  border-color : rgba(white, 0.6); }
 }

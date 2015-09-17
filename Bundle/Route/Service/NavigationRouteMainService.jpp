@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-12 02:24:35
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-14 21:01:27
 **************************************************************/
 
 class NavigationRouteMainService extends MasterService {
@@ -25,7 +25,7 @@ class NavigationRouteMainService extends MasterService {
 
 		for (var i in routes) {
 			route = routeManager.get(i);
-			parent.addRoute(route.getName(), route);
+			parent.addRoute(route.getName(), route, parent);
 			if (routes[i] != null)
 				this.imbrication(routes[i], parent.getRoute(route.getName()).getRoute('view'));
 		}
