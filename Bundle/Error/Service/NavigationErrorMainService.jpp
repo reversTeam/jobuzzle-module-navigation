@@ -1,0 +1,37 @@
+/**************************************************************
+*     ####         #                               #          * Jobuzzle - Copyright All rights reserved
+*     ####         #                               #          *
+*       ##  #####  ######  #     # ####### ####### #  #####   * @Author: revers
+*       ## #     # #     # #     #      #       #  # #     #  *
+*       ## #     # #     # #     #     #       #   # #     #  * @Date:   2015-09-24 23:49:48
+*       ## #     # #     # #     #    #       #    # #     #  *
+*       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
+*  ####### #     # #     # #     #  #       #      # #        *
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-25 01:40:58
+**************************************************************/
+
+class NavigationErrorMainService extends MasterService {
+
+	initialize : function () {
+		_super();
+		this.onListen();
+	}
+
+	onListen : function () {
+		var dispatcher = serviceLocator.get('Dispatcher');
+
+		dispatcher.listen('Error:url:404', this, this.error404.bind(this));
+
+		return dispatcher;
+	}
+
+	error404 : function (trigger, datas) {
+		var dispatcher = serviceLocator.get('Dispatcher');
+		var titleService = serviceLocator.get('ServiceManager').get('navigation_title_change_service')
+		var translator = serviceLocator.get('Translator');
+
+		dispatcher.trigger('Body:Content:change', { 'content' : 'navigation_error_404_template' });
+		titleService.changeTitle('404 - '+ translator.translate('error.404'));
+	}
+
+}

@@ -3,30 +3,37 @@
 *     ####         #                               #          *
 *       ##  #####  ######  #     # ####### ####### #  #####   * @Author: revers
 *       ## #     # #     # #     #      #       #  # #     #  *
-*       ## #     # #     # #     #     #       #   # #     #  * @Date:   2015-08-08 11:12:48
+*       ## #     # #     # #     #     #       #   # #     #  * @Date:   2015-09-25 01:05:49
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-25 01:36:59
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-25 01:20:20
 **************************************************************/
 
-class NavigationTitleChangeService extends MasterService {
+div#error404 {
+	text-align: center;
 
-	initialize : function () {
-		var parent = _super();
-		
-		return parent;
+
+	h1#code {
+		margin-top: 100px;
+		color : $secondary_color;
+		font-size: 150px;
+		margin-bottom: 50px;
+		line-height: 125px;
+
+		span#logo404 {
+			display: inline-block;
+			background-image: url('../Body/img/logo/jobuzzle.png');
+			width: 125px;
+			height: 125px;
+			margin-left : 30px;
+			margin-right: 20px;
+			vertical-align: bottom;
+		}
 	}
 
-	public onListen : function (){
-		var dispatcher = serviceLocator.get("Dispatcher");
-
-		dispatcher.listen('Title:change:title', this, this.changeTitle.bind(this));
-		return dispatcher;
-	}
-
-	public changeTitle : function (title) {
-		if(title != undefined)
-			document.title = title;
+	h2#message {
+		color : $primary_color;
+		font-size: 42px;
 	}
 }

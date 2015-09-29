@@ -3,30 +3,11 @@
 *     ####         #                               #          *
 *       ##  #####  ######  #     # ####### ####### #  #####   * @Author: revers
 *       ## #     # #     # #     #      #       #  # #     #  *
-*       ## #     # #     # #     #     #       #   # #     #  * @Date:   2015-08-08 11:12:48
+*       ## #     # #     # #     #     #       #   # #     #  * @Date:   2015-09-25 01:04:41
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-25 01:36:59
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-25 01:05:41
 **************************************************************/
 
-class NavigationTitleChangeService extends MasterService {
-
-	initialize : function () {
-		var parent = _super();
-		
-		return parent;
-	}
-
-	public onListen : function (){
-		var dispatcher = serviceLocator.get("Dispatcher");
-
-		dispatcher.listen('Title:change:title', this, this.changeTitle.bind(this));
-		return dispatcher;
-	}
-
-	public changeTitle : function (title) {
-		if(title != undefined)
-			document.title = title;
-	}
-}
+@import "error404";

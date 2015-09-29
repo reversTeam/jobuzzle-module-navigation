@@ -3,30 +3,22 @@
 *     ####         #                               #          *
 *       ##  #####  ######  #     # ####### ####### #  #####   * @Author: revers
 *       ## #     # #     # #     #      #       #  # #     #  *
-*       ## #     # #     # #     #     #       #   # #     #  * @Date:   2015-08-08 11:12:48
+*       ## #     # #     # #     #     #       #   # #     #  * @Date:   2015-09-25 00:01:45
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-25 01:36:59
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-25 01:12:43
 **************************************************************/
 
-class NavigationTitleChangeService extends MasterService {
+class NavigationErrorTemplate404View extends ContentView {
 
-	initialize : function () {
-		var parent = _super();
-		
-		return parent;
+	public display : function () {
+		var translator = serviceLocator.get('Translator');
+
+		return <div id="error404">
+			<h1 id="code">4<span id="logo404"></span>4</h1>
+			<h2 id="message">{translator.translate('error.404')}</h2>
+		</div>;
 	}
 
-	public onListen : function (){
-		var dispatcher = serviceLocator.get("Dispatcher");
-
-		dispatcher.listen('Title:change:title', this, this.changeTitle.bind(this));
-		return dispatcher;
-	}
-
-	public changeTitle : function (title) {
-		if(title != undefined)
-			document.title = title;
-	}
 }
