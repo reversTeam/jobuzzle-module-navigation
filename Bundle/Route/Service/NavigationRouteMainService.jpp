@@ -7,15 +7,15 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-14 21:01:27
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-25 01:43:25
 **************************************************************/
 
 class NavigationRouteMainService extends MasterService {
 
 	initialize : function () {
+		_super();
 		var routes = Config['routes'];
 		var router = serviceLocator.get('Router');
-		_super();
 		this.imbrication(routes, router);
 	}
 

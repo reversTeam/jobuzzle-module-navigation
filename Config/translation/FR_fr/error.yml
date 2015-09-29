@@ -3,16 +3,11 @@
 #     ####         #                               #          #
 #       ##  #####  ######  #     # ####### ####### #  #####   # @Author: revers
 #       ## #     # #     # #     #      #       #  # #     #  #
-#       ## #     # #     # #     #     #       #   # #     #  # @Date:   2015-08-08 11:12:48
+#       ## #     # #     # #     #     #       #   # #     #  # @Date:   2015-09-25 00:36:58
 #       ## #     # #     # #     #    #       #    # #     #  #
 #       ## #     # #     # #     #   #       #     # ######   # @Last Modified by:   revers
 #  ####### #     # #     # #     #  #       #      # #        #
-#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-09-25 00:31:17
+#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-09-25 00:37:21
 ###############################################################
 
-invokables : 
-	navigation_loader_main_template : Loader/Template/NavigationLoaderMainTemplate
-	navigation_error_404_template : Loader/Template/NavigationError404Template
-
-shared : 
-	navigation_error_404_template : true
+404 : Cette page n'existe pas

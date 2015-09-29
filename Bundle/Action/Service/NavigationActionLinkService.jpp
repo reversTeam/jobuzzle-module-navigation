@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-12 14:06:31
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-25 01:38:12
 **************************************************************/
 
 class NavigationActionLinkService extends MasterService {
@@ -41,9 +41,10 @@ class NavigationActionLinkService extends MasterService {
 
 		if(url == undefined)
 			throw "Url it's undefined, you can call this link/url";
+
 		if (!route) {
-			console.log('404');
-			dispatcher.trigger('Error:url:404', { 'route' : url });
+			manageHistory.add({}, url);
+			dispatcher.trigger('Error:url:404', { 'url' : url });
 			return ;
 		}
 
