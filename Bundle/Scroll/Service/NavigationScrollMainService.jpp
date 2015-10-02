@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-08-08 14:32:21
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-02 21:17:31
 **************************************************************/
 
 class NavigationScrollMainService extends MasterService {
@@ -32,21 +32,20 @@ class NavigationScrollMainService extends MasterService {
 		if (currentY < this._currentY) {
 			percent = Math.floor((currentY / totalHeight) * 100 / this._range) * this._range;
 			if (percent != this._percent) {
+				dispatcher.trigger('Navigation:Scroll:Top<'+ Math.floor(percent / 10) * 10);
 				dispatcher.trigger('Navigation:Scroll:Top'+ percent);
 				dispatcher.trigger('Navigation:Scroll:Top', { percent : percent });
 			}
 		} else if (currentY > this._currentY) {
 			percent = Math.floor(((currentY + height) / totalHeight) * 100 / this._range) * this._range;
 			if (percent != this._percent) {
+				dispatcher.trigger('Navigation:Scroll:Bottom>'+ Math.floor(percent / 10) * 10);
 				dispatcher.trigger('Navigation:Scroll:Bottom'+ percent);
 				dispatcher.trigger('Navigation:Scroll:Bottom', { percent : percent });
 			}
 		}
 		this._percent = percent;
 		this._currentY = currentY;
-
-		// dispatcher.trigger()
-		// console.log(this._currentY +'/'+ totalHeight);
 	}
 
 }
