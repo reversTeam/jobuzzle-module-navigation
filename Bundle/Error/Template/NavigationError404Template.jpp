@@ -7,11 +7,12 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-25 00:25:19
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-02 15:31:28
 **************************************************************/
 
 class NavigationError404Template extends ContentTemplate {
 
-	_viewClassName = 'NavigationErrorTemplate404View';
+	public _viewClassName = 'NavigationErrorTemplate404View';
+	public _hasLoader = false;
 
 }

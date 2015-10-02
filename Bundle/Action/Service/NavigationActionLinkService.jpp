@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-25 01:38:12
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-01 20:50:28
 **************************************************************/
 
 class NavigationActionLinkService extends MasterService {
@@ -58,11 +58,17 @@ class NavigationActionLinkService extends MasterService {
 	}
 
 	action : function (route) {
+		var router = serviceLocator.get('Router');
 		var controllerManager = serviceLocator.get('ControllerManager');
 		var controller = controllerManager.get(route['actions']['controller']);
 		var actions = route['actions'];
+
 		delete route['actions'];
 
 		controller[actions['method']](route);
+		if (actions['noParent']) {
+			var dispatcher = serviceLocator.get('Dispatcher');
+			dispatcher.trigger('Router:setParentEntity:'+ actions['noParent'], { entity : false });
+		}
 	}
 }
