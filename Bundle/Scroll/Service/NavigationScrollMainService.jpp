@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-02 21:17:31
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-03 02:31:34
 **************************************************************/
 
 class NavigationScrollMainService extends MasterService {
@@ -32,14 +32,18 @@ class NavigationScrollMainService extends MasterService {
 		if (currentY < this._currentY) {
 			percent = Math.floor((currentY / totalHeight) * 100 / this._range) * this._range;
 			if (percent != this._percent) {
-				dispatcher.trigger('Navigation:Scroll:Top<'+ Math.floor(percent / 10) * 10);
+				var x = Math.floor(percent / 10);
+
+				dispatcher.trigger('Navigation:Scroll:Top<'+ ((x == 0 ? 1 : x) * 10));
 				dispatcher.trigger('Navigation:Scroll:Top'+ percent);
 				dispatcher.trigger('Navigation:Scroll:Top', { percent : percent });
 			}
 		} else if (currentY > this._currentY) {
 			percent = Math.floor(((currentY + height) / totalHeight) * 100 / this._range) * this._range;
 			if (percent != this._percent) {
-				dispatcher.trigger('Navigation:Scroll:Bottom>'+ Math.floor(percent / 10) * 10);
+				var x = Math.floor(percent / 10);
+
+				dispatcher.trigger('Navigation:Scroll:Bottom>'+ ((x == 10 ? 9 : x) * 10));
 				dispatcher.trigger('Navigation:Scroll:Bottom'+ percent);
 				dispatcher.trigger('Navigation:Scroll:Bottom', { percent : percent });
 			}
