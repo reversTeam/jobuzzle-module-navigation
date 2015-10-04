@@ -7,31 +7,63 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-11 21:47:14
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-04 02:01:09
 **************************************************************/
 
 class NavigationResizeManageService extends MasterService {
+
+	_width = undefined;
+	_height = undefined;
+
+	#default get for _width;
+	#default get for _height;
 
 	initialize : function () {
 		var parent = _super();
 		
 		this.onListen();
+		this.resize();
 		return parent;
 	}
 
 	public onListen : function (){
 		var dispatcher = serviceLocator.get("Dispatcher");
-		var self = this;
 
 		window.addEventListener('resize', this.resize.bind(this));
 	}
 
-	resize : function () {
+	setWidth : function (width) {
 		var dispatcher = serviceLocator.get('Dispatcher');
 
-		dispatcher.trigger('Navigation:change:size', {
-			width : window.innerWidth,
-			height : window.innerHeight
-		});
+		this._width = width;
+		dispatcher.trigger('Navigation:change:width', {width : width});
+	}
+
+	setHeight : function (height) {
+		var dispatcher = serviceLocator.get('Dispatcher');
+
+		this._height = height;
+		dispatcher.trigger('Navigation:change:height', {height : height});
+	}
+
+	resize : function () {
+		var dispatcher = serviceLocator.get('Dispatcher');
+		var width = window.innerWidth;
+		var height = window.innerHeight;
+		var lastWidth = this.getWidth();
+		var lastHeight = this.getHeight();
+
+		if (width != lastWidth)
+			this.setWidth(width);
+		if (height != lastHeight)
+			this.setHeight(height);
+
+		if (height != lastHeight || width != lastWidth) {
+			dispatcher.trigger('Navigation:change:size', {
+				width : width,
+				height : height
+			});
+		}
+
 	}
 }
