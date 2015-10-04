@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-03 02:31:34
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-04 11:05:53
 **************************************************************/
 
 class NavigationScrollMainService extends MasterService {
@@ -22,11 +22,12 @@ class NavigationScrollMainService extends MasterService {
 		window.addEventListener('scroll', this.handleScroll.bind(this));
 	}
 
-	handleScroll : function (event) {
+	handleScroll : function (e) {
+		var event = (e.target) ? e.target : e.srcElement
 		var dispatcher = serviceLocator.get('Dispatcher');
 		var height = window.innerHeight;
-		var totalHeight = event.srcElement.body.scrollHeight;
-		var currentY = event.srcElement.body.scrollTop;
+		var totalHeight = event.body.scrollHeight;
+		var currentY = document.documentElement.scrollTop ? document.documentElement.scrollTop : event.body.scrollTop;
 		var percent = 0;
 
 		if (currentY < this._currentY) {
