@@ -13,7 +13,7 @@
 class NavigationScrollMainService extends MasterService {
 
 	_currentY = 0;
-	_percent = 0;
+	_percent = undefined;
 	_range = 2;
 
 	initialize : function () {
