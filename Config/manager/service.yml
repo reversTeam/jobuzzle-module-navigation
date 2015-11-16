@@ -7,7 +7,7 @@
 #       ## #     # #     # #     #    #       #    # #     #  #
 #       ## #     # #     # #     #   #       #     # ######   # @Last Modified by:   revers
 #  ####### #     # #     # #     #  #       #      # #        #
-#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-09-24 23:51:58
+#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-11-09 00:26:58
 ###############################################################
 
 invokables : 
@@ -19,4 +19,5 @@ invokables :
 	navigation_route_main_service : Route/Service/NavigationRouteMainService
 	navigation_loader_main_service : Loader/Service/NavigationLoaderMainService
 	navigation_scroll_main_service : Scroll/Service/NavigationScrollMainService
-	navigation_error_main_service : Scroll/Service/NavigationErrorMainService
+	navigation_error_main_service : Error/Service/NavigationErrorMainService
+	navigation_popup_main_service: Popup/Service/NavigationPopupMainService

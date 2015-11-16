@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-25 00:27:47
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-09 00:27:22
 **************************************************************/
 
 class NavigationAutoload extends MasterAutoload {
@@ -21,6 +21,7 @@ class NavigationAutoload extends MasterAutoload {
 		serviceManager.get('navigation_history_link_service');
 		serviceManager.get('navigation_title_change_service');
 		serviceManager.get('navigation_resize_manage_service');
+		serviceManager.get('navigation_popup_main_service');
 	}
 
 	public init : function () {
