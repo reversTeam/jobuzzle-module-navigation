@@ -7,12 +7,14 @@
 #       ## #     # #     # #     #    #       #    # #     #  #
 #       ## #     # #     # #     #   #       #     # ######   # @Last Modified by:   revers
 #  ####### #     # #     # #     #  #       #      # #        #
-#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-09-25 00:31:17
+#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-11-09 00:25:48
 ###############################################################
 
 invokables : 
 	navigation_loader_main_template : Loader/Template/NavigationLoaderMainTemplate
-	navigation_error_404_template : Loader/Template/NavigationError404Template
+	navigation_error_404_template : Error/Template/NavigationError404Template
+	navigation_popup_main_template: Popup/Template/NavigationPopupMainTemplate
 
 shared : 
 	navigation_error_404_template : true
+	navigation_popup_main_template : true

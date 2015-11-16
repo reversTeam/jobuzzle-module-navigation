@@ -1,0 +1,80 @@
+/**************************************************************
+*     ####         #                               #          * Jobuzzle - Copyright All rights reserved
+*     ####         #                               #          *
+*       ##  #####  ######  #     # ####### ####### #  #####   * @Author: revers
+*       ## #     # #     # #     #      #       #  # #     #  *
+*       ## #     # #     # #     #     #       #   # #     #  * @Date:   2015-11-09 00:23:49
+*       ## #     # #     # #     #    #       #    # #     #  *
+*       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
+*  ####### #     # #     # #     #  #       #      # #        *
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-16 11:31:47
+**************************************************************/
+
+class NavigationPopupTemplateMainView extends MasterView {
+
+	initialState : function () {
+		var state = {};
+
+		state['title'] = null;
+		state['open'] = false;
+		state['content'] =  null;
+		state['validated'] = this.close.bind(this);
+		state['canceled'] = this.close.bind(this);
+
+		return state;
+	}
+
+	public close : function (e) {
+		var dispatcher = serviceLocator.get('Dispatcher');
+
+		dispatcher.trigger('Popup:Open:coverHide');
+
+		this.setState({ 'open' : false });
+	}
+
+	public open : function (config) {
+		if (!config || !config['template'])
+			return ;
+		var dispatcher = serviceLocator.get('Dispatcher');
+		var params = {};
+		var template = this.getTemplateManager().get(config['template']);
+
+
+		dispatcher.trigger('Popup:Open:coverShow', {lock : true, opacity : 70});
+		params['open'] = true;
+		params['title'] = config['title'];
+		params['content'] = React['createElement'](template.getView(), {});
+
+		if (config['validated']) {
+			params['validated'] = config['validated'].bind(this, template);
+		}
+
+		if (typeof config['init'] == 'function')
+			config['init'](template);
+		this.setState(params);
+	}
+
+	public render : function () {
+		var t = serviceLocator.get('Translator');
+		var title = this.state['title'] ? t.translate(this.state['title']) : '';
+
+
+		if (this['state']['open'])
+			return <div className="popup">
+				<div className="head">
+					<h3 className="title">{title}</h3>
+					<i className="fa fa-close" onClick={this.close.bind(this)}></i>
+				</div>
+				<div className="content">
+					{this.state['content']}
+				</div>
+				<div className="bottom">
+					<button className="error" onClick={this.state['canceled']}>Annuler</button>
+					<button className="secondary" onClick={this.state['validated']}>Valider</button>
+				</div>
+			</div>;
+		else 
+			return null;
+	}
+
+}

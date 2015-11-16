@@ -3,13 +3,31 @@
 *     ####         #                               #          *
 *       ##  #####  ######  #     # ####### ####### #  #####   * @Author: revers
 *       ## #     # #     # #     #      #       #  # #     #  *
-*       ## #     # #     # #     #     #       #   # #     #  * @Date:   2015-08-08 11:12:48
+*       ## #     # #     # #     #     #       #   # #     #  * @Date:   2015-11-09 00:23:20
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-09 00:39:05
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-10 14:57:06
 **************************************************************/
 
-@import "Error/all";
-@import "Loader/all";
-@import "Popup/all";
+class NavigationPopupMainTemplate extends MasterTemplate {
+
+	_viewClassName = 'NavigationPopupTemplateMainView';
+
+	onListen : function () {
+		var dispatcher = _super();
+
+		dispatcher.listen('*:*:popupOpen', this, this.popupOpen.bind(this));
+
+		return dispatcher;
+	}
+
+	popupOpen : function (trigger, config) {
+		if (this._view) {
+			if (!config)
+				config = {};
+			this._view.open(config);
+		}
+	}
+
+}
